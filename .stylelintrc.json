@@ -10,6 +10,7 @@
 		"indentation": [
 			"tab"
 		],
+		"string-quotes": "double",
 		"color-hex-case": "upper"
 	}
 }
