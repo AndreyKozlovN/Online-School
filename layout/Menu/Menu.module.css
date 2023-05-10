@@ -60,6 +60,16 @@
 	padding: 0;
 
 	list-style: none;
+
+	display: none;
+}
+
+.secondLevelBlockOpened {
+	display: block;
+} 
+
+.secondLevelBlockOpened:last-child {
+	margin-bottom: 20px;
 }
 
 .thirdLevel {
@@ -80,3 +90,4 @@
 .thirdLevel:hover {
 	color: var(--primary);
 }
+
