@@ -8,6 +8,7 @@ import CoursesIcon from "./icons/courses.svg";
 import ServicesIcon from "./icons/services.svg";
 import BooksIcon from "./icons/books.svg";
 import ProductsIcon from "./icons/products.svg";
+import Link from "next/link";
 
 const firstLevelMenu: FirstLevelMenuItem[] = [
   {
@@ -44,16 +45,18 @@ export const Menu = (): JSX.Element => {
       <>
         {firstLevelMenu.map((menu) => (
           <div key={menu.route}>
-            <a href={`/${menu.route}`}>
-              <div
-                className={cn(styles.firstLevel, {
-                  [styles.firstLevelAcrive]: menu.id == firstCategory,
-                })}
-              >
-                {menu.icon}
-                <span>{menu.name}</span>
-              </div>
-            </a>
+            <Link href={`/${menu.route}`}>
+              <a>
+                <div
+                  className={cn(styles.firstLevel, {
+                    [styles.firstLevelAcrive]: menu.id == firstCategory,
+                  })}
+                >
+                  {menu.icon}
+                  <span>{menu.name}</span>
+                </div>
+              </a>
+            </Link>
             {menu.id == firstCategory && buildSecondLevel(menu)}
           </div>
         ))}
@@ -72,7 +75,7 @@ export const Menu = (): JSX.Element => {
                 [styles.secondLevelBlockOpened]: menu.isOpened,
               })}
             >
-              {buildThirdLevel(menu.pages, menuItem.name)}
+              {buildThirdLevel(menu.pages, menuItem.route)}
             </div>
           </div>
         ))}
@@ -82,14 +85,15 @@ export const Menu = (): JSX.Element => {
 
   const buildThirdLevel = (pages: PageItem[], route: string) => {
     return pages.map((page) => (
-      <a
-        href={`/${route}/${page.alias}`}
-        className={cn(styles.thirdLevel, {
-          [styles.thirdLevelActive]: true,
-        })}
-      >
-        {page.category}
-      </a>
+      <Link href={`/${route}/${page.alias}`}>
+        <a
+          className={cn(styles.thirdLevel, {
+            [styles.thirdLevelActive]: true,
+          })}
+        >
+          {page.category}
+        </a>
+      </Link>
     ));
   };
 
