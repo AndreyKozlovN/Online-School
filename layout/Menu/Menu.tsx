@@ -35,7 +35,7 @@ export const Menu = (): JSX.Element => {
               <a>
                 <div
                   className={cn(styles.firstLevel, {
-                    [styles.firstLevelAcrive]: menu.id == firstCategory,
+                    [styles.firstLevelActive]: menu.id == firstCategory,
                   })}
                 >
                   {menu.icon}
